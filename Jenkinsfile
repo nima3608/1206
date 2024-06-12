@@ -9,7 +9,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Code aus dem Versionskontrollsystem abrufen
-                git 'https://github.com/your-repo/hello-world.git'
+                git 'https://github.com/nima3608/1206.git'
             }
         }
 
