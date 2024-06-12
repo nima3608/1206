@@ -6,13 +6,24 @@ pipeline {
     }
 
     stages {
+        stage('Checkout') {
+            steps {
+                // Code aus dem Versionskontrollsystem abrufen
+                git 'https://github.com/your-repo/hello-world.git'
+            }
+        }
+
         stage('Build') {
             steps {
-                // Wechseln Sie in das Verzeichnis, das die pom.xml-Datei enthält
-                dir('path/to/your/project') {
-                    // Führen Sie den Maven-Befehl aus
-                    bat 'mvn clean package'
-                }
+                // Führen Sie den Maven-Befehl aus
+                bat 'mvn clean package'
+            }
+        }
+
+        stage('Run') {
+            steps {
+                // Führen Sie das Java-Programm aus
+                bat 'java -cp target/hello-world-1.0-SNAPSHOT.jar com.example.HelloWorld'
             }
         }
     }
